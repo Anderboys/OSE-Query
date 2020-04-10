@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BrokerConfig>
+	<name_service>ose-storage</name_service>
+	<Connection>
+		<username>admin</username>
+		<password>APOVUGLSVKXHTPLP</password>
+		<Addresses>
+			<Address>
+				<host>portal-ssl508-23.bmix-dal-yp-9c08792a-66cd-4486-87c5-5830aac53ad3.kbengtsson-efact-pe.composedb.com</host>
+				<virtual_host>bmix-dal-yp-9c08792a-66cd-4486-87c5-5830aac53ad3</virtual_host>
+				<port>39375</port>
+			</Address>
+			<Address>
+				<host>portal-ssl539-21.bmix-dal-yp-9c08792a-66cd-4486-87c5-5830aac53ad3.kbengtsson-efact-pe.composedb.com</host>
+				<virtual_host>bmix-dal-yp-9c08792a-66cd-4486-87c5-5830aac53ad3</virtual_host>
+				<port>39375</port>
+			</Address>
+		</Addresses>
+		<ssl_enabled>true</ssl_enabled>
+		<trustStore>/etc/ssl/certs/ssl_keystore_rabbitmq</trustStore>
+		<trustStorePassword>mju76yhnbgt54rfv</trustStorePassword>
+	</Connection>
+	<Producer>
+		<Exchange name="clearing">
+			<type>direct</type>
+			<durable>true</durable>
+			<auto_delete>false</auto_delete>
+			<exclusive>false</exclusive>
+			<Queue name="sftp-cdr">
+				<routingKey>storage-to-sftpCdr</routingKey>
+			</Queue>
+		</Exchange>
+		<Exchange name="clearing">
+			<type>direct</type>
+			<durable>true</durable>
+			<auto_delete>false</auto_delete>
+			<exclusive>false</exclusive>
+			<Queue name="sftp-pdf">
+				<routingKey>storage-to-sftpPdf</routingKey>
+			</Queue>
+		</Exchange>
+	</Producer>
+	<Consumer>
+		<npool>10</npool>
+		<Exchange name="clearing">
+			<type>direct</type>
+			<durable>true</durable>
+			<auto_delete>false</auto_delete>
+			<exclusive>false</exclusive>
+			<Queue name="xml-storage">
+				<bindingKey>dispatcher-to-storage</bindingKey>
+				<class>pe.com.rackspace.storage.broker.WorkerXMLStorage</class>
+			</Queue>
+			<Queue name="pdf-storage">
+				<bindingKey>pdf-to-storage</bindingKey>
+				<class>pe.com.rackspace.storage.broker.WorkerPDFStorage</class>
+			</Queue>
+			<Queue name="cdr_sunat-storage">
+				<bindingKey>sunatProcess-to-storage</bindingKey>
+				<class>pe.com.rackspace.storage.broker.WorkerSunatStorage</class>
+			</Queue>
+		</Exchange>
+	</Consumer>
+</BrokerConfig>

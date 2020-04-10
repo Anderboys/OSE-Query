@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StorageConfig>
+	<Connection>
+		<Username>efactperu</Username>
+		<ApiKey>3000646c7b5c46828d223f95dea3e0ad</ApiKey>
+		<StorageRegion>DFW</StorageRegion>
+		<CdnEnabled>true</CdnEnabled>
+	</Connection>
+	<Containers enable-prod="false">
+		<!-- These subdirectory are concatenated with containers -->
+		<subdirectory>
+			<xml>xml/</xml>
+			<cdr>cdr/</cdr>
+			<pdf>pdf/</pdf>
+			<cdr-sunat>cdr/sunat/</cdr-sunat>
+			<xml-error>xml/error/</xml-error>
+		</subdirectory>
+		
+		<!-- Name all container by type of document -->
+		<!-- If enable-prod = false then application will use container Developer, else application will use container Production -->
+		<Container type="01">
+			<Production>odin-prod-invoice</Production>
+			<Developer>odin-dev-invoice</Developer>
+		</Container>
+		<Container type="03">
+			<Production>odin-prod-boleta</Production>
+			<Developer>odin-dev-boleta</Developer>
+		</Container>
+		<Container type="07">
+			<Production>odin-prod-creditNote</Production>
+			<Developer>odin-dev-creditNote</Developer>
+		</Container>
+		<Container type="08">
+			<Production>odin-prod-debitNote</Production>
+			<Developer>odin-dev-debitNote</Developer>
+		</Container>
+		<Container type="09">
+			<Production>odin-prod-despatchAdvice</Production>
+			<Developer>odin-dev-despatchAdvice</Developer>
+		</Container>
+		<Container type="14">
+			<Production>odin-prod-servicesPublic</Production>
+			<Developer>odin-dev-servicesPublic</Developer>
+		</Container>
+		<Container type="16">
+			<Production>odin-prod-summary</Production>
+			<Developer>odin-dev-summary</Developer>
+		</Container>
+		<Container type="17">
+			<Production>odin-prod-voided</Production>
+			<Developer>odin-dev-voided</Developer>
+		</Container>
+		<Container type="18">
+			<Production>odin-prod-reversion</Production>
+			<Developer>odin-dev-reversion</Developer>
+		</Container>
+		<Container type="20">
+			<Production>odin-prod-retention</Production>
+			<Developer>odin-dev-retention</Developer>
+		</Container>
+		<Container type="40">
+			<Production>odin-prod-perception</Production>
+			<Developer>odin-dev-perception</Developer>
+		</Container>
+	</Containers>
+</StorageConfig>

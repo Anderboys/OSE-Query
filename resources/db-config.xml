@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DBConfig>
+	<name-db>ose-efact</name-db>
+	<!-- If exist this tag then tag connections will be ignored Otherwise tag 
+		connections must exist. If tag uri is empty then it will be ignored. -->
+	<uri>mongodb://admin:XLJGNPSMXNGYJBUF@sl-us-south-1-portal.21.dblayer.com:40134,sl-us-south-1-portal.22.dblayer.com:40134/ose-efact?authSource=admin&amp;ssl=true</uri>
+	<ssl>
+		<trustStore>/opt/efact/ose/create_user/truststore-mongodb-prd</trustStore>
+		<trustStorePassword>bgt54rfv</trustStorePassword>
+	</ssl>
+</DBConfig>
